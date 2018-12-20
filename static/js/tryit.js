@@ -44,15 +44,18 @@ $(document).ready(function() {
 
     function initializeClock(id, endtime) {
         var clock = document.getElementById(id);
+        var hoursSpan = clock.querySelector('.hours');
         var minutesSpan = clock.querySelector('.minutes');
         var secondsSpan = clock.querySelector('.seconds');
 
         function updateClock() {
             var t = getTimeRemaining(endtime);
 
+	    var hours = Math.floor(t / 3600);
             var minutes = Math.floor(t / 60);
             var seconds = t - minutes * 60;
 
+	    hoursSpan.innerHTML = ('0' + hours).slice(-2);
             minutesSpan.innerHTML = ('0' + minutes).slice(-2);
             secondsSpan.innerHTML = ('0' + seconds).slice(-2);
 
